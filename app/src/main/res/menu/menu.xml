@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/menu_featured"
+        android:checked="true"
+        android:icon="@drawable/ic_featured"
+        android:title="Featured" />
+
+    <item
+        android:id="@+id/menu_mylearning"
+        android:icon="@drawable/ic_mylearning"
+        android:title="My Learning" />
+
+    <item
+        android:id="@+id/menu_setting"
+        android:icon="@drawable/ic_setting"
+        android:title="Setting" />
+
+</menu>

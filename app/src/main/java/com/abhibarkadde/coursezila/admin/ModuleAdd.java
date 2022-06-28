@@ -1,0 +1,17 @@
+package com.abhibarkadde.coursezila.admin;
+
+public class ModuleAdd {
+    String name;
+
+    public ModuleAdd(String name) {
+        this.name = name;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+}

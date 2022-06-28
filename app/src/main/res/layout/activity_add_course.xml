@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="40dp"
+    tools:context=".admin.AddCourse">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <EditText
+            android:id="@+id/ed_title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Title" />
+
+        <EditText
+            android:id="@+id/ed_Subtitle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:hint="Subtitle" />
+
+        <EditText
+            android:id="@+id/ed_Disc"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:hint="Subtitle"
+            android:inputType="textMultiLine" />
+
+        <EditText
+            android:id="@+id/ed_creater"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:hint="Created by" />
+
+        <EditText
+            android:id="@+id/ed_lang"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:hint="Language" />
+
+        <ImageView
+            android:id="@+id/im_thumbnail"
+            android:layout_width="match_parent"
+            android:layout_height="180dp"
+            android:layout_gravity="center" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btn_images"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Select Thumbnail" />
+
+        <com.google.android.material.button.MaterialButton
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:onClick="createCourese"
+            android:text="Create" />
+
+    </LinearLayout>
+
+</ScrollView>
