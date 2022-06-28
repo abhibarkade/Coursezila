@@ -1,12 +1,14 @@
 package com.abhibarkadde.coursezila.course;
 
 import android.annotation.SuppressLint;
+import android.graphics.Color;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
 import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -33,7 +35,7 @@ public class Course extends AppCompatActivity {
 
     SimpleExoPlayerView exoPlayerView;
     SimpleExoPlayer exoPlayer;
-//    String videoURL = "https://media.geeksforgeeks.org/wp-content/uploads/20201217163353/Screenrecorder-2020-12-17-16-32-03-350.mp4";
+    //    String videoURL = "https://media.geeksforgeeks.org/wp-content/uploads/20201217163353/Screenrecorder-2020-12-17-16-32-03-350.mp4";
     String videoURL = "https://firebasestorage.googleapis.com/v0/b/coursezila.appspot.com/o/Courses%2FC%3Aadc01373-2a2a-4c4e-94ff-ea79d1a65998%2Fdownload%20and%20install.mp4?alt=media&token=16e4a800-fc0c-4b89-b8e6-821385694eba";
 
     @Override
@@ -91,6 +93,24 @@ public class Course extends AppCompatActivity {
             }
         } catch (Exception exc) {
             Log.d("TAG", exc.getMessage());
+        }
+    }
+
+    public void changeView(View view) {
+        TextView t1 = findViewById(R.id.tx_ch1);
+        TextView t2 = findViewById(R.id.tx_ch2);
+
+        TextView txt = (TextView) view;
+        if (txt.getText().equals("Description")) {
+            txt.setTextColor(Color.parseColor("#FFFFFF"));
+            txt.setBackground(ContextCompat.getDrawable(this, R.drawable.label_back));
+            t1.setTextColor(Color.parseColor("#808080"));
+            t1.setBackground(null);
+        } else if (txt.getText().equals("Playlist")) {
+            txt.setTextColor(Color.parseColor("#FFFFFF"));
+            txt.setBackground(ContextCompat.getDrawable(this, R.drawable.label_back));
+            t2.setTextColor(Color.parseColor("#808080"));
+            t2.setBackground(null);
         }
     }
 }
