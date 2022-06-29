@@ -5,7 +5,6 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Toast;
 
 import androidx.fragment.app.Fragment;
 
@@ -39,9 +38,7 @@ public class FG_Featured extends Fragment {
         };
 
         courses[0].setOnClickListener(v ->
-                startActivity(new Intent(getActivity(), Course.class)
-                        .putExtra("Id", "C:adc01373-2a2a-4c4e-94ff-ea79d1a65998"))
-        );
+                startActivity(new Intent(getActivity(), Course.class)));
 
         for (int i = 1; i < courses.length; i++)
             courses[i].setOnClickListener(v ->

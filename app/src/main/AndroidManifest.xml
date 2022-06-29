@@ -19,13 +19,9 @@
         android:usesCleartextTraffic="true"
         tools:targetApi="31">
         <activity
-            android:name=".course.Course"
-            android:exported="false" />
-        <activity
-            android:name=".user.Home"
+            android:name=".SplashScreen"
             android:exported="true"
-            android:screenOrientation="portrait"
-            tools:ignore="LockedOrientationActivity">
+            android:theme="@style/SplashTheme">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -33,14 +29,19 @@
             </intent-filter>
         </activity>
         <activity
+            android:name=".course.Course"
+            android:exported="false" />
+        <activity
+            android:name=".user.Home"
+            android:exported="true"
+            android:screenOrientation="portrait"
+            tools:ignore="LockedOrientationActivity"></activity>
+        <activity
             android:name=".admin.AddCourse"
-            android:exported="true">
-
-        </activity>
+            android:exported="true" />
         <activity
             android:name=".MainActivity"
-            android:exported="true">
-        </activity>
+            android:exported="true" />
     </application>
 
 </manifest>
