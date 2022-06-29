@@ -3,6 +3,7 @@ package com.abhibarkadde.coursezila.admin;
 import android.Manifest;
 import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.media.MediaMetadataRetriever;
 import android.os.Build;
 import android.os.Bundle;
 import android.view.View;
@@ -24,6 +25,8 @@ import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.squareup.picasso.Picasso;
 
+import java.util.HashMap;
+
 public class AddCourse extends AppCompatActivity {
 
     EditText title, subtitle, lang, creater, disc, module;
@@ -32,12 +35,28 @@ public class AddCourse extends AppCompatActivity {
 
     FirebaseFirestore db;
 
+    public static String convertMillieToHMmSs(long millie) {
+        long seconds = (millie / 1000);
+        long second = seconds % 60;
+        long minute = (seconds / 60) % 60;
+        long hour = (seconds / (60 * 60)) % 24;
+
+        String result = "";
+        if (hour > 0) {
+            return String.format("%02d:%02d:%02d", hour, minute, second);
+        } else {
+            return String.format("%02d:%02d", minute, second);
+        }
+
+    }
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_course);
 
         db = FirebaseFirestore.getInstance();
+
 
         title = findViewById(R.id.ed_title);
         subtitle = findViewById(R.id.ed_Subtitle);
@@ -61,12 +80,7 @@ public class AddCourse extends AppCompatActivity {
             startActivityForResult(Intent.createChooser(intent, "Select Thumbnail"), 102);
         });
 
-        StorageReference storageReference = FirebaseStorage.getInstance().getReference();
-        storageReference.child("Courses")
-                .child("C:adc01373-2a2a-4c4e-94ff-ea79d1a65998")
-                .child("thumbnail.jpg")
-                .getDownloadUrl()
-                .addOnSuccessListener(uri -> Picasso.get().load(uri).into(thumbnail)).addOnFailureListener(e -> Toast.makeText(AddCourse.this, e.getMessage(), Toast.LENGTH_SHORT).show());
+
     }
 
     @Override
@@ -136,11 +150,45 @@ public class AddCourse extends AppCompatActivity {
     }
 
     public void addModule(View view) {
-        db.collection("Courses")
+        /*db.collection("Courses")
                 .document("C:adc01373-2a2a-4c4e-94ff-ea79d1a65998")
                 .collection("Modules")
                 .document(module.getText().toString().trim())
-                .set(new ModuleAdd(module.getText().toString().trim()));
+                .set(new ModuleAdd(module.getText().toString().trim()));*/
+        StorageReference storageReference = FirebaseStorage.getInstance().getReference();
+        storageReference.child("Courses")
+                .child("C:adc01373-2a2a-4c4e-94ff-ea79d1a65998")
+                .child("Lectures")
+                .child("1.Installation of Android Studio")
+                .listAll()
+                .addOnFailureListener(e -> Toast.makeText(AddCourse.this, "No Data Found!!", Toast.LENGTH_SHORT).show())
+                .addOnSuccessListener(listResult -> {
+                    for (StorageReference ref : listResult.getItems()) {
+                        LectureDetails details = new LectureDetails(ref.getName());
+                        ref.getDownloadUrl()
+                                .addOnSuccessListener(uri -> {
+                                    details.setLink(String.valueOf(uri));
+                                    MediaMetadataRetriever retriever = new MediaMetadataRetriever();
+                                    retriever.setDataSource(details.getLink(), new HashMap<String, String>());
+                                    String time = retriever.extractMetadata(MediaMetadataRetriever.METADATA_KEY_DURATION);
+                                    long timeInMillisec = Long.parseLong(time);
+                                    retriever.release();
+                                    details.setLength(convertMillieToHMmSs(timeInMillisec));
+                                    Toast.makeText(this, details.toString(), Toast.LENGTH_SHORT).show();
+
+                                    // Add to Firestore
+                                    db.collection("Courses")
+                                            .document("C:adc01373-2a2a-4c4e-94ff-ea79d1a65998")
+                                            .collection("Modules")
+                                            .document("1.Installation of Android Studio")
+                                            .collection(details.getName())
+                                            .document(details.getName())
+                                            .set(details);
+                                })
+                                .addOnFailureListener(e -> details.setLink(""));
+                    }
+                    Toast.makeText(this, "" + listResult.getItems().size(), Toast.LENGTH_SHORT).show();
+                });
     }
 }
 

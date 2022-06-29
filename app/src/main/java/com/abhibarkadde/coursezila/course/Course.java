@@ -52,7 +52,7 @@ public class Course extends AppCompatActivity {
 
     SimpleExoPlayerView exoPlayerView;
     SimpleExoPlayer exoPlayer;
-    String videoURL = "https://firebasestorage.googleapis.com/v0/b/coursezila.appspot.com/o/Courses%2FC%3Aadc01373-2a2a-4c4e-94ff-ea79d1a65998%2Fdownload%20and%20install.mp4?alt=media&token=16e4a800-fc0c-4b89-b8e6-821385694eba";
+    String videoURL = "https://firebasestorage.googleapis.com/v0/b/coursezila.appspot.com/o/Courses%2FC%3Aadc01373-2a2a-4c4e-94ff-ea79d1a65998%2FLectures%2F1.Installation%20of%20Android%20Studio%2F1.Download%20and%20install.mp4?alt=media&token=5cfadc03-69bf-47a7-b908-806b48da3f5b";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -165,7 +165,7 @@ public class Course extends AppCompatActivity {
                             list.add(module.getName());
                         }
                         playlist.setLayoutManager(new LinearLayoutManager(this));
-                        playlist.setAdapter(new PlaylistAdapter(list));
+                        playlist.setAdapter(new PlaylistAdapter(this, list));
                     });
         } catch (Exception e) {
             e.printStackTrace();
