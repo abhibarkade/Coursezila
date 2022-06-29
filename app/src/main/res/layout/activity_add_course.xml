@@ -64,6 +64,18 @@
             android:onClick="createCourese"
             android:text="Create" />
 
+        <EditText
+            android:id="@+id/ed_module"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Module" />
+
+        <com.google.android.material.button.MaterialButton
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:onClick="addModule"
+            android:text="Add Module" />
+
     </LinearLayout>
 
 </ScrollView>

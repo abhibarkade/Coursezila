@@ -3,6 +3,8 @@ package com.abhibarkadde.coursezila.admin;
 public class ModuleAdd {
     String name;
 
+    public ModuleAdd(){}
+
     public ModuleAdd(String name) {
         this.name = name;
     }

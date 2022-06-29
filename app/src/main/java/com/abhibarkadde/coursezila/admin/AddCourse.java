@@ -26,7 +26,7 @@ import com.squareup.picasso.Picasso;
 
 public class AddCourse extends AppCompatActivity {
 
-    EditText title, subtitle, lang, creater, disc;
+    EditText title, subtitle, lang, creater, disc, module;
     MaterialButton btn;
     ImageView thumbnail;
 
@@ -43,6 +43,7 @@ public class AddCourse extends AppCompatActivity {
         subtitle = findViewById(R.id.ed_Subtitle);
         creater = findViewById(R.id.ed_creater);
         disc = findViewById(R.id.ed_Disc);
+        module = findViewById(R.id.ed_module);
         lang = findViewById(R.id.ed_lang);
         thumbnail = findViewById(R.id.im_thumbnail);
         btn = findViewById(R.id.btn_images);
@@ -132,6 +133,14 @@ public class AddCourse extends AppCompatActivity {
                         Toast.makeText(AddCourse.this, "" + value.size(), Toast.LENGTH_SHORT).show();
                     }
                 });*/
+    }
+
+    public void addModule(View view) {
+        db.collection("Courses")
+                .document("C:adc01373-2a2a-4c4e-94ff-ea79d1a65998")
+                .collection("Modules")
+                .document(module.getText().toString().trim())
+                .set(new ModuleAdd(module.getText().toString().trim()));
     }
 }
 

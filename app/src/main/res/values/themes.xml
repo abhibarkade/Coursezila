@@ -17,9 +17,18 @@
         <item name="shapeAppearanceOverlay">@style/DialogCorners</item>
     </style>
 
+    <style name="Dialog_rounded" parent="@style/Theme.AppCompat.Dialog">
+        <item name="shapeAppearanceOverlay">@style/DialogCorners25</item>
+    </style>
+
     <style name="DialogCorners">
         <item name="cornerFamily">rounded</item>
         <item name="cornerSize">16dp</item>
+    </style>
+
+    <style name="DialogCorners25">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSize">25%</item>
     </style>
 
 </resources>

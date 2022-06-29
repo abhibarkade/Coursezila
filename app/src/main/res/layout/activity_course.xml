@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#99FDFDFD"
+    android:background="@color/lightBack"
     android:padding="16dp"
     tools:context=".course.Course">
 
@@ -21,6 +21,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_margin="4dp"
+                android:onClick="goBack"
                 app:cardCornerRadius="12dp">
 
                 <ImageView
@@ -53,7 +54,7 @@
             <com.google.android.exoplayer2.ui.SimpleExoPlayerView
                 android:id="@+id/player"
                 android:layout_width="match_parent"
-                android:layout_height="180dp"
+                android:layout_height="200dp"
                 app:resize_mode="fill"
                 app:use_controller="false" />
 
@@ -94,11 +95,14 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Created by " />
+                    android:fontFamily="@font/roboto_bold"
+                    android:text="Created by"
+                    android:textColor="@color/black" />
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_marginStart="4dp"
                     android:text="Abhishek Barkade"
                     android:textColor="@color/theme" />
 
@@ -150,9 +154,9 @@
             </com.google.android.material.card.MaterialCardView>
 
             <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/recyclerViews"
+                android:id="@+id/recyclerView"
                 android:layout_width="match_parent"
-                android:layout_height="720dp"
+                android:layout_height="wrap_content"
                 android:layout_marginTop="16dp" />
 
             <com.google.android.material.textview.MaterialTextView
@@ -160,10 +164,11 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
+                android:text="No Description Found"
                 android:visibility="gone" />
 
         </LinearLayout>
 
     </LinearLayout>
 
-</androidx.core.widget.NestedScrollView>
+</ScrollView>
