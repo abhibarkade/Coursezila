@@ -3,7 +3,7 @@ package com.abhibarkadde.coursezila.admin;
 import java.util.UUID;
 
 public class CourseBasics {
-    String title, subtitle, description, creator, language, profileUrl, id;
+    String title, subtitle, description, creator, language, thumbnailUrl, id;
 
     public CourseBasics() {
     }
@@ -17,13 +17,13 @@ public class CourseBasics {
         this.id = id;
     }
 
-    public CourseBasics(String title, String subtitle, String description, String creator, String language, String profileUrl, String id) {
+    public CourseBasics(String title, String subtitle, String description, String creator, String language, String thumbnailUrl, String id) {
         this.title = title;
         this.subtitle = subtitle;
         this.description = description;
         this.creator = creator;
         this.language = language;
-        this.profileUrl = profileUrl;
+        this.thumbnailUrl = thumbnailUrl;
         this.id = id;
     }
 
@@ -67,12 +67,12 @@ public class CourseBasics {
         this.language = language;
     }
 
-    public String getProfileUrl() {
-        return profileUrl;
+    public String getthumbnailUrl() {
+        return thumbnailUrl;
     }
 
-    public void setProfileUrl(String profileUrl) {
-        this.profileUrl = profileUrl;
+    public void setthumbnailUrl(String thumbnailUrl) {
+        this.thumbnailUrl = thumbnailUrl;
     }
 
     @Override
@@ -82,7 +82,7 @@ public class CourseBasics {
                 ", subtitle='" + subtitle + '\'' +
                 ", creator='" + creator + '\'' +
                 ", language='" + language + '\'' +
-                ", profileUrl='" + profileUrl + '\'' +
+                ", thumbnailUrl='" + thumbnailUrl + '\'' +
                 ", id='" + id + '\'' +
                 '}';
     }

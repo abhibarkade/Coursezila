@@ -11,10 +11,13 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.ContextCompat;
+import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.abhibarkadde.coursezila.R;
+import com.abhibarkadde.coursezila.utils.AppConstants;
 
+import java.util.Arrays;
 import java.util.List;
 
 public class PlaylistAdapter extends RecyclerView.Adapter<PlaylistAdapter.ViewHolder> {
@@ -37,7 +40,7 @@ public class PlaylistAdapter extends RecyclerView.Adapter<PlaylistAdapter.ViewHo
     @SuppressLint("UseCompatLoadingForDrawables")
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
-        holder.name.setText(list.get(position).split("\\.")[1]);
+        holder.name.setText(list.get(position));
         holder.dropLayout.setOnClickListener(v -> {
             if (holder.recyclerView.getVisibility() == View.GONE) {
                 holder.recyclerView.setVisibility(View.VISIBLE);
@@ -47,6 +50,11 @@ public class PlaylistAdapter extends RecyclerView.Adapter<PlaylistAdapter.ViewHo
                 holder.arrow.setBackground(ContextCompat.getDrawable(activity, R.drawable.ic_arrow_up));
             }
         });
+
+        if (position == 0) {
+            holder.recyclerView.setLayoutManager(new LinearLayoutManager(activity));
+            holder.recyclerView.setAdapter(new LectureListAdapter(activity, Arrays.asList(AppConstants.lectures[position])));
+        }
     }
 
     @Override

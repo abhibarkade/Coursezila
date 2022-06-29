@@ -9,6 +9,7 @@
     <color name="white">#FFFFFFFF</color>
 
     <color name="theme">#7455F7</color>
-    <color name="lightBack">#99FDFDFD</color>
+<!--    <color name="lightBack">#99FDFDFD</color>-->
+    <color name="lightBack">#D0F1EDED</color>
 
 </resources>

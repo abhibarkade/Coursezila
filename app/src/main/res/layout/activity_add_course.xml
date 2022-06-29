@@ -47,6 +47,7 @@
             android:hint="Language" />
 
         <ImageView
+            android:background="@drawable/thumbnail"
             android:id="@+id/im_thumbnail"
             android:layout_width="match_parent"
             android:layout_height="180dp"

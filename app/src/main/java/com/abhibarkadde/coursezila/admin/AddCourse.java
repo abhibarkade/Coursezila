@@ -1,6 +1,7 @@
 package com.abhibarkadde.coursezila.admin;
 
 import android.Manifest;
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.media.MediaMetadataRetriever;
@@ -17,10 +18,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.abhibarkadde.coursezila.R;
 import com.google.android.material.button.MaterialButton;
-import com.google.firebase.firestore.DocumentSnapshot;
-import com.google.firebase.firestore.EventListener;
 import com.google.firebase.firestore.FirebaseFirestore;
-import com.google.firebase.firestore.FirebaseFirestoreException;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.squareup.picasso.Picasso;
@@ -103,22 +101,150 @@ public class AddCourse extends AppCompatActivity {
     }
 
     public void createCourese(View view) {
-//        String id = "C:" + UUID.randomUUID();
-        CourseBasics basics = new CourseBasics(
-                "", "", "", "", "", "", ""
-        );
-/*
-        Bitmap bitmap = ((BitmapDrawable) thumbnail.getDrawable()).getBitmap();
+        String id = "CRS:ANDROID:V1";
 
+        /*CourseBasics basics = new CourseBasics(
+                "Android App Development Bootcamp with Java",
+                "Learn Android App Development using Java in HINDI- Build real apps with Android Studio",
+                "No Description Found",
+                "Abhishek Barkade",
+                "Hindi",
+                "",
+                id
+        );
+        db.collection("Courses")
+                .document(id)
+                .collection("CourseInfo")
+                .document("Info")
+                .set(basics);
+        Toast.makeText(this, "Course Added", Toast.LENGTH_SHORT).show();
+
+        String[] list = new String[]{
+                "1.Installation of Android Studio",
+                "2.Getting started with basics of Android Studio",
+                "3.Media: Images, Audio and Video",
+                "4.GitHub",
+                "5.Important concepts in Android",
+                "6.Advanced concepts in Android",
+                "7.SQLite Database",
+                "8.Firebase",
+                "9.Extra Concepts",
+                "10.Map & Geolocation"
+        };
+*/
+        String[] l2 = new String[]{
+                "1.Download & Install Android Studio",
+                "2.First App 'Hello World'",
+                "3.Setup AVD & Run app",
+                "4.Run app on physical device : Wired",
+                "5.Run app on physical device : Wireless",
+                "6.Extra options : Bluestacks",
+                "7.App basic files"
+        };
+
+/*        for (String str : l2) {
+            db.collection("Courses")
+                    .document(id)
+                    .collection("Modules")
+                    .document("1.Installation of Android Studio")
+                    .collection("1.Installation of Android Studio")
+                    .addSnapshotListener(new EventListener<QuerySnapshot>() {
+                        @Override
+                        public void onEvent(@Nullable QuerySnapshot value, @Nullable FirebaseFirestoreException error) {
+                            Toast.makeText(AddCourse.this, "" + value.size(), Toast.LENGTH_SHORT).show();
+                        }
+                    });
+        }*/
+
+        /*for (int j = 1; j <= 5; j++) {
+            for (int i = 1; i <= 5; i++) {
+                db.collection("Courses")
+                        .document(id)
+                        .collection("Modules")
+                        .document("Module" + j)
+                        .collection("Lecture" + i)
+                        .document("Lecture" + i)
+                        .set(new LectureDetails());
+            }
+        }*/
+
+        /*db.collection("Courses")
+                .document(id)
+                .collection("Modules")
+                .addSnapshotListener((value, error) -> {
+                    Toast.makeText(this, value.toString(), Toast.LENGTH_SHORT).show();
+                });*/
+
+
+
+/*
+        List<LectureDetails> details = new ArrayList<>();
+        StorageReference ref = FirebaseStorage.getInstance().getReference();
+        ref.child("Courses")
+                .child(id)
+                .child("1.Installation of Android Studio")
+                .listAll()
+                .addOnSuccessListener(listResult -> {
+                    List<StorageReference> refs = listResult.getItems();
+                    for (int i = 0; i < refs.size(); i++) {
+                        LectureDetails tmp = new LectureDetails();
+                        tmp.setName(refs.get(i).getName());
+                        int finalI = i;
+                        refs.get(i).getDownloadUrl()
+                                .addOnSuccessListener(new OnSuccessListener<Uri>() {
+                                    @Override
+                                    public void onSuccess(Uri uri) {
+                                        tmp.setLink(String.valueOf(uri));
+                                        MediaMetadataRetriever retriever = new MediaMetadataRetriever();
+                                        retriever.setDataSource(String.valueOf(uri), new HashMap<String, String>());
+                                        String time = retriever.extractMetadata(MediaMetadataRetriever.METADATA_KEY_DURATION);
+                                        long timeInMillisec = Long.parseLong(time);
+                                        long seconds = (timeInMillisec / 1000);
+                                        long second = seconds % 60;
+                                        long minute = (seconds / 60) % 60;
+                                        long hour = (seconds / (60 * 60)) % 24;
+
+                                        String result = "";
+                                        if (hour > 0)
+                                            result = String.format("%02d:%02d:%02d", hour, minute, second);
+                                        else
+                                            result = String.format("%02d:%02d", minute, second);
+
+                                        retriever.release();
+
+                                        tmp.setLength(result);
+
+                                        {
+                                            db.collection("Courses")
+                                                    .document(id)
+                                                    .collection("Modules")
+                                                    .document("1.Installation of Android Studio")
+                                                    .collection("1.Installation of Android Studio")
+                                                    .document(l2[finalI])
+                                                    .collection(l2[finalI])
+                                                    .document(l2[finalI])
+                                                    .set(tmp);
+                                        }
+                                    }
+                                });
+                    }
+
+                });
+
+        Toast.makeText(this, "" + details.size(), Toast.LENGTH_SHORT).show();
+*/
+
+
+        /*Bitmap bitmap = ((BitmapDrawable) thumbnail.getDrawable()).getBitmap();
         StorageReference storage = FirebaseStorage.getInstance().getReference();
         storage.child("Courses")
                 .child(id)
+                .child("Raw")
                 .child("Thumbnail.png")
                 .putBytes(bitmap.getNinePatchChunk())
                 .addOnFailureListener(e -> Toast.makeText(AddCourse.this, e.getMessage(), Toast.LENGTH_SHORT).show())
                 .addOnSuccessListener(taskSnapshot -> {
-                    basics.setProfileUrl(String.valueOf(taskSnapshot.getStorage().getDownloadUrl()));
-                    Toast.makeText(this, "Thumbnail Added", Toast.LENGTH_SHORT).show();
+
                 });*/
 
         /*db.collection("Courses")
@@ -126,7 +252,7 @@ public class AddCourse extends AppCompatActivity {
                 .collection("Modules")
                 .add(new ModuleAdd("Module 1"));*/
 
-        db.collection("Courses")
+        /*db.collection("Courses")
                 .document("C:adc01373-2a2a-4c4e-94ff-ea79d1a65998")
                 .addSnapshotListener(new EventListener<DocumentSnapshot>() {
                     @Override
@@ -134,7 +260,7 @@ public class AddCourse extends AppCompatActivity {
                         CourseBasics basics1 = value.toObject(CourseBasics.class);
                         Toast.makeText(AddCourse.this, basics1.toString(), Toast.LENGTH_SHORT).show();
                     }
-                });
+                });*/
 
 
 
@@ -147,6 +273,32 @@ public class AddCourse extends AppCompatActivity {
                         Toast.makeText(AddCourse.this, "" + value.size(), Toast.LENGTH_SHORT).show();
                     }
                 });*/
+    }
+
+    @SuppressLint("DefaultLocale")
+    public String getVideoLength(String link) {
+        String result = null;
+        try {
+            MediaMetadataRetriever retriever = new MediaMetadataRetriever();
+            retriever.setDataSource(link, new HashMap<String, String>());
+            String time = retriever.extractMetadata(MediaMetadataRetriever.METADATA_KEY_DURATION);
+            long timeInMillisec = Long.parseLong(time);
+            long seconds = (timeInMillisec / 1000);
+            long second = seconds % 60;
+            long minute = (seconds / 60) % 60;
+            long hour = (seconds / (60 * 60)) % 24;
+
+            result = "";
+            if (hour > 0)
+                result = String.format("%02d:%02d:%02d", hour, minute, second);
+            else
+                result = String.format("%02d:%02d", minute, second);
+
+            retriever.release();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return result;
     }
 
     public void addModule(View view) {
