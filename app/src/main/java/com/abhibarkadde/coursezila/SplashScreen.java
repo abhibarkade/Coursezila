@@ -7,6 +7,7 @@ import android.os.Handler;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.abhibarkadde.coursezila.auth.SignIn;
 import com.abhibarkadde.coursezila.course.Course;
 
 @SuppressLint("CustomSplashScreen")
@@ -17,7 +18,7 @@ public class SplashScreen extends AppCompatActivity {
         super.onCreate(savedInstanceState);
 
         new Handler().postDelayed(() -> {
-            startActivity(new Intent(SplashScreen.this, Course.class));
+            startActivity(new Intent(SplashScreen.this, SignIn.class));
             finish();
         }, 800);
     }

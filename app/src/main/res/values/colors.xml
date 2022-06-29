@@ -8,8 +8,7 @@
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
 
-    <color name="theme">#7455F7</color>
-<!--    <color name="lightBack">#99FDFDFD</color>-->
+    <color name="theme">#39B68E</color>
     <color name="lightBack">#D0F1EDED</color>
 
 </resources>
