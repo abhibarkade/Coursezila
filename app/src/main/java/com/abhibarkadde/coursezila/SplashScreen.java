@@ -8,7 +8,9 @@ import android.os.Handler;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.abhibarkadde.coursezila.auth.SignIn;
-import com.abhibarkadde.coursezila.course.Course;
+import com.abhibarkadde.coursezila.user.Home;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 
 @SuppressLint("CustomSplashScreen")
 public class SplashScreen extends AppCompatActivity {
@@ -18,8 +20,12 @@ public class SplashScreen extends AppCompatActivity {
         super.onCreate(savedInstanceState);
 
         new Handler().postDelayed(() -> {
-            startActivity(new Intent(SplashScreen.this, SignIn.class));
+            FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+            if (user != null)
+                startActivity(new Intent(SplashScreen.this, Home.class));
+            else
+                startActivity(new Intent(SplashScreen.this, SignIn.class));
             finish();
-        }, 800);
+        }, 0);
     }
 }

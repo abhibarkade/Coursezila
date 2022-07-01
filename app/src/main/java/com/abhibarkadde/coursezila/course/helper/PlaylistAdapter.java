@@ -40,20 +40,24 @@ public class PlaylistAdapter extends RecyclerView.Adapter<PlaylistAdapter.ViewHo
     @SuppressLint("UseCompatLoadingForDrawables")
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
-        holder.name.setText(list.get(position));
-        holder.dropLayout.setOnClickListener(v -> {
-            if (holder.recyclerView.getVisibility() == View.GONE) {
-                holder.recyclerView.setVisibility(View.VISIBLE);
-                holder.arrow.setBackground(ContextCompat.getDrawable(activity, R.drawable.ic_arrow_down));
-            } else {
-                holder.recyclerView.setVisibility(View.GONE);
-                holder.arrow.setBackground(ContextCompat.getDrawable(activity, R.drawable.ic_arrow_up));
-            }
-        });
+        try {
+            //holder.name.setText(list.get(position));
+            holder.dropLayout.setOnClickListener(v -> {
+                if (holder.recyclerView.getVisibility() == View.GONE) {
+                    holder.recyclerView.setVisibility(View.VISIBLE);
+                    holder.arrow.setBackground(ContextCompat.getDrawable(activity, R.drawable.ic_arrow_down));
+                } else {
+                    holder.recyclerView.setVisibility(View.GONE);
+                    holder.arrow.setBackground(ContextCompat.getDrawable(activity, R.drawable.ic_arrow_up));
+                }
+            });
 
-        if (position == 0) {
-            holder.recyclerView.setLayoutManager(new LinearLayoutManager(activity));
-            holder.recyclerView.setAdapter(new LectureListAdapter(activity, Arrays.asList(AppConstants.lectures[position])));
+            if (position == 0) {
+                holder.recyclerView.setLayoutManager(new LinearLayoutManager(activity));
+                holder.recyclerView.setAdapter(new LectureListAdapter(activity, Arrays.asList(AppConstants.lectures[position])));
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
         }
     }
 
@@ -62,7 +66,7 @@ public class PlaylistAdapter extends RecyclerView.Adapter<PlaylistAdapter.ViewHo
         return list.size();
     }
 
-    public class ViewHolder extends RecyclerView.ViewHolder {
+    public static class ViewHolder extends RecyclerView.ViewHolder {
         TextView name;
         ImageView arrow;
         RecyclerView recyclerView;

@@ -2,10 +2,10 @@ package com.abhibarkadde.coursezila.course;
 
 import android.annotation.SuppressLint;
 import android.app.Dialog;
+import android.content.Intent;
 import android.graphics.Color;
 import android.net.Uri;
 import android.os.Bundle;
-import android.os.Handler;
 import android.util.Log;
 import android.view.View;
 import android.widget.FrameLayout;
@@ -33,11 +33,13 @@ import com.google.android.exoplayer2.ui.SimpleExoPlayerView;
 import com.google.android.exoplayer2.upstream.BandwidthMeter;
 import com.google.android.exoplayer2.upstream.DefaultBandwidthMeter;
 import com.google.android.exoplayer2.upstream.DefaultHttpDataSourceFactory;
+import com.google.android.material.appbar.MaterialToolbar;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 
 import java.util.Arrays;
+import java.util.Objects;
 
 public class Course extends AppCompatActivity {
 
@@ -47,6 +49,8 @@ public class Course extends AppCompatActivity {
     FrameLayout controller;
 
     Dialog loadingDialog;
+
+    MaterialToolbar toolbar;
 
     FirebaseFirestore firestore;
     StorageReference storage;
@@ -60,16 +64,19 @@ public class Course extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_course);
 
+        startActivity(new Intent(this, FullScreenPlayer.class));
+
         initAll();
         listeners();
     }
 
+    @SuppressLint("RestrictedApi")
     private void initAll() {
         // Exo Player
         exoPlayerView = findViewById(R.id.player);
 
         // Buttons
-        btnPlayPause = findViewById(R.id.btn_PlayPause);
+        //btnPlayPause = findViewById(R.id.btn_PlayPause);
 
         // RecyclerView
         playlist = findViewById(R.id.recyclerView);
@@ -78,7 +85,17 @@ public class Course extends AppCompatActivity {
         txtDescription = findViewById(R.id.txt_Description);
 
         // LinearLayout
-        controller = findViewById(R.id.controller);
+        //controller = findViewById(R.id.controller);
+
+        // Toolbar
+        toolbar = findViewById(R.id.course_toolbar);
+        {
+            toolbar.setTitle("Android app Development");
+            toolbar.setTitleCentered(true);
+            setSupportActionBar(toolbar);
+            Objects.requireNonNull(getSupportActionBar()).setDisplayHomeAsUpEnabled(true);
+            getSupportActionBar().setDisplayShowHomeEnabled(true);
+        }
 
         // Dialog
         loadingDialog = new Dialog(this, R.style.Dialog_rounded);
@@ -112,22 +129,6 @@ public class Course extends AppCompatActivity {
             exoPlayer.setPlayWhenReady(false);
         } catch (Exception e) {
             Log.e("TAG", "Error : " + e);
-        }
-    }
-
-    public void showPlayPauseBtn(View view) {
-        controller.setVisibility(View.VISIBLE);
-        try {
-            if (exoPlayer.getPlayWhenReady()) {
-                exoPlayer.setPlayWhenReady(false);
-                btnPlayPause.setBackground(ContextCompat.getDrawable(Course.this, R.drawable.img_play));
-            } else {
-                exoPlayer.setPlayWhenReady(true);
-                btnPlayPause.setBackground(ContextCompat.getDrawable(Course.this, R.drawable.img_pause));
-                new Handler().postDelayed(() -> controller.setVisibility(View.GONE), 1500);
-            }
-        } catch (Exception exc) {
-            Log.d("TAG", exc.getMessage());
         }
     }
 
@@ -165,7 +166,23 @@ public class Course extends AppCompatActivity {
         }
     }
 
-    public void goBack(View view) {
-        finish();
+    @Override
+    protected void onPause() {
+        super.onPause();
+        try {
+            exoPlayer.setPlayWhenReady(false);
+        } catch (Exception e) {
+            Log.d("TAG", e.getMessage());
+        }
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        try {
+            exoPlayer.setPlayWhenReady(false);
+        } catch (Exception e) {
+            Log.d("TAG", e.getMessage());
+        }
     }
 }

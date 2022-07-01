@@ -3,7 +3,6 @@
 
     <item
         android:id="@+id/menu_featured"
-        android:checked="true"
         android:icon="@drawable/ic_featured"
         android:title="Featured" />
 
