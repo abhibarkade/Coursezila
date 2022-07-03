@@ -41,4 +41,13 @@ public class UserDetails {
     public void setEnrolledIn(String enrolledIn) {
         this.enrolledIn = enrolledIn;
     }
+
+    @Override
+    public String toString() {
+        return "UserDetails{" +
+                "name='" + name + '\'' +
+                ", mail='" + mail + '\'' +
+                ", enrolledIn='" + enrolledIn + '\'' +
+                '}';
+    }
 }

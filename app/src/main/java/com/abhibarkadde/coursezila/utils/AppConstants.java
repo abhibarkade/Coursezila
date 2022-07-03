@@ -3,6 +3,8 @@ package com.abhibarkadde.coursezila.utils;
 public class AppConstants {
     public static String id = "CRS:ANDROID:V1";
 
+    public static String intro = "https://firebasestorage.googleapis.com/v0/b/coursezila.appspot.com/o/Courses%2FCRS%3AANDROID%3AV1%2FAndroid%20App%20Development%20Bootcamp%20using%20Java%20in%20Hindi.mp4?alt=media&token=e98cbad1-b3b8-4835-9c58-1eeaf97f75ea";
+
     public static String[] module = new String[]{
             "Installation of Android Studio",
             "Getting started with basics of Android",

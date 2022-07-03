@@ -177,10 +177,12 @@
     </LinearLayout>
 
     <com.google.android.material.card.MaterialCardView
+        android:id="@+id/registrationBlock"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="bottom"
-        android:visibility="gone">
+        android:visibility="gone"
+        app:cardElevation="24dp">
 
         <com.google.android.material.card.MaterialCardView
             android:layout_width="match_parent"
@@ -192,12 +194,13 @@
             android:backgroundTint="@color/theme"
             app:cardCornerRadius="16dp">
 
-            <TextView
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/txt_EnrollNow"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:fontFamily="@font/roboto_bold"
                 android:gravity="center"
-                android:text="Enroll now"
+                android:text="ENROLL NOW"
                 android:textColor="@color/white"
                 android:textSize="18sp" />
 

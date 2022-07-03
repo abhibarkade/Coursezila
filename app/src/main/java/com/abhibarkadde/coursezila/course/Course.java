@@ -7,10 +7,10 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
-import android.widget.FrameLayout;
-import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -18,6 +18,8 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.abhibarkadde.coursezila.R;
 import com.abhibarkadde.coursezila.course.helper.PlaylistAdapter;
+import com.abhibarkadde.coursezila.dialogs.ShowMessagePrompt;
+import com.abhibarkadde.coursezila.profile.UserDetails;
 import com.abhibarkadde.coursezila.utils.AppConstants;
 import com.google.android.exoplayer2.ExoPlayerFactory;
 import com.google.android.exoplayer2.SimpleExoPlayer;
@@ -32,7 +34,14 @@ import com.google.android.exoplayer2.ui.SimpleExoPlayerView;
 import com.google.android.exoplayer2.upstream.BandwidthMeter;
 import com.google.android.exoplayer2.upstream.DefaultBandwidthMeter;
 import com.google.android.exoplayer2.upstream.DefaultHttpDataSourceFactory;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
 import com.google.android.material.appbar.MaterialToolbar;
+import com.google.android.material.card.MaterialCardView;
+import com.google.android.material.textview.MaterialTextView;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
@@ -42,21 +51,21 @@ import java.util.Objects;
 
 public class Course extends AppCompatActivity {
 
-    ImageView btnPlayPause;
     RecyclerView playlist;
     TextView txtDescription;
-    FrameLayout controller;
+    MaterialTextView txtEnrollNow;
 
     Dialog loadingDialog;
 
+    MaterialCardView enrollNow;
     MaterialToolbar toolbar;
 
     FirebaseFirestore firestore;
+    FirebaseUser user;
     StorageReference storage;
 
     SimpleExoPlayerView exoPlayerView;
     SimpleExoPlayer exoPlayer;
-    String videoURL = "https://firebasestorage.googleapis.com/v0/b/coursezila.appspot.com/o/Courses%2FCRS%3AANDROID%3AV1%2F1.Installation%20of%20Android%20Studio%2F1.Download%20and%20install.mp4?alt=media&token=717b5e1a-6d35-4723-8152-3855a9af28e0";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -80,6 +89,10 @@ public class Course extends AppCompatActivity {
 
         // TextView
         txtDescription = findViewById(R.id.txt_Description);
+        txtEnrollNow = findViewById(R.id.txt_EnrollNow);
+
+        // Enroll Part
+        enrollNow = findViewById(R.id.registrationBlock);
 
         // LinearLayout
         //controller = findViewById(R.id.controller);
@@ -110,6 +123,27 @@ public class Course extends AppCompatActivity {
         }
     }
 
+    private void checkUserCourseDetails() {
+        user = FirebaseAuth.getInstance().getCurrentUser();
+        firestore.collection("Users")
+                .document(user.getEmail().split("@")[0])
+                .get()
+                .addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
+                    @Override
+                    public void onComplete(@NonNull Task<DocumentSnapshot> task) {
+                        boolean flg = false;
+                        UserDetails userDetails = task.getResult().toObject(UserDetails.class);
+                        for (String str : userDetails.getEnrolledIn().split("~")) {
+                            if (str.equals("CRS:ANDROID:V1")) {
+                                flg = true;
+                                break;
+                            }
+                        }
+                        Toast.makeText(Course.this, "" + flg, Toast.LENGTH_SHORT).show();
+                    }
+                });
+    }
+
     @SuppressLint("ResourceType")
     private void listeners() {
         // Exo Player - Bind & Play video
@@ -117,7 +151,7 @@ public class Course extends AppCompatActivity {
             BandwidthMeter bandwidthMeter = new DefaultBandwidthMeter();
             TrackSelector trackSelector = new DefaultTrackSelector(new AdaptiveTrackSelection.Factory(bandwidthMeter));
             exoPlayer = ExoPlayerFactory.newSimpleInstance(this, trackSelector);
-            Uri videoUri = Uri.parse(videoURL);
+            Uri videoUri = Uri.parse(AppConstants.intro);
             DefaultHttpDataSourceFactory dataSourceFactory = new DefaultHttpDataSourceFactory("exoplayer_video");
             ExtractorsFactory extractorsFactory = new DefaultExtractorsFactory();
             MediaSource mediaSource = new ExtractorMediaSource(videoUri, dataSourceFactory, extractorsFactory, null, null);
@@ -127,6 +161,12 @@ public class Course extends AppCompatActivity {
         } catch (Exception e) {
             Log.e("TAG", "Error : " + e);
         }
+
+        // Enroll for Course
+        txtEnrollNow.setOnClickListener(v -> ShowMessagePrompt.showRegistrationPrompt(this,
+                "Register for Android App Development",
+                "Enter Coupon to get started with it",
+                firestore, user));
     }
 
     public void changeView(View view) {
