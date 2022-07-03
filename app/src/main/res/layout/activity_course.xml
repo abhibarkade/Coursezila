@@ -158,11 +158,13 @@
 
                     <com.google.android.material.textview.MaterialTextView
                         android:id="@+id/txt_Description"
+                        android:visibility="gone"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="16dp"
-                        android:text="No Description Found"
-                        android:visibility="gone" />
+                        android:layout_margin="30dp"
+                        android:fontFamily="@font/noto_sans_semi_bold"
+                        android:text="@string/description"
+                        android:textSize="16sp" />
 
                 </LinearLayout>
 

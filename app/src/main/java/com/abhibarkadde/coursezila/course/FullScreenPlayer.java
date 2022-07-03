@@ -32,7 +32,7 @@ public class FullScreenPlayer extends AppCompatActivity {
 
     SimpleExoPlayerView exoPlayerView;
     SimpleExoPlayer exoPlayer;
-    String videoURL = "https://firebasestorage.googleapis.com/v0/b/coursezila.appspot.com/o/Courses%2FCRS%3AANDROID%3AV1%2F1.Installation%20of%20Android%20Studio%2F1.Download%20and%20install.mp4?alt=media&token=717b5e1a-6d35-4723-8152-3855a9af28e0";
+    String videoURL;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,6 +45,8 @@ public class FullScreenPlayer extends AppCompatActivity {
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
 
         setting.setOnClickListener(v -> showOptions());
+
+        videoURL = getIntent().getStringExtra("Url");
 
         try {
             BandwidthMeter bandwidthMeter = new DefaultBandwidthMeter();

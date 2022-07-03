@@ -9,6 +9,7 @@
     tools:context=".user.Home">
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:visibility="gone"
         android:id="@+id/bottom_nav_view"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"

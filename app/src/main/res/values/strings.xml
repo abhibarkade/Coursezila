@@ -17,4 +17,32 @@
     </string>
     <string name="attachment_summary_off">Only download attachments when manually requested</string>
     <string name="discover_your_next_skill_nlearn_anything_you_want">Discover your next skill\nLearn anything you want!</string>
+
+    <string name="description">
+        This course is designed to learn android app development from basics. \n\nAnybody can learn this course. Its easy to understand and learn.\n\n
+
+        All of the concepts learned in this course are of the concepts which are mostly used in all apps\n\n for e.g. user interfaces, icons, images, videos, audios, maps, location, databases, authentication systems and much more.\n\n After this course you will gain enough knowledge so that you can develop your own apps easily.\n\n
+
+        Is this course for you?\n\n
+
+        This is a one-size-fits-all course for beginners to experts. So, this course is for you if you are:\n\n
+
+        - A total beginner, with a curious mind and a drive to make and create awesome stuff\n\n
+
+        - A confident coder, looking for the key to the secret club (app developers unite!)\n\n
+
+        - A person with an itch to build your dream app\n\n
+
+        - An entrepreneur with big ideas\n\n\n\n
+
+        Benefits to you\n\n
+
+        - Freedom to work from anywhere (beach, coffee shop, airport – anywhere with Wi-Fi)\n\n
+
+        - A sense of accomplishment as you build amazing things\n\n
+
+        - Make any Android app you like (your imagination is your only limit)\n
+
+    </string>
+
 </resources>
