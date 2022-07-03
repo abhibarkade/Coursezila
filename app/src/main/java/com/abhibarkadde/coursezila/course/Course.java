@@ -2,7 +2,6 @@ package com.abhibarkadde.coursezila.course;
 
 import android.annotation.SuppressLint;
 import android.app.Dialog;
-import android.content.Intent;
 import android.graphics.Color;
 import android.net.Uri;
 import android.os.Bundle;
@@ -63,8 +62,6 @@ public class Course extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_course);
-
-        startActivity(new Intent(this, FullScreenPlayer.class));
 
         initAll();
         listeners();
@@ -169,16 +166,6 @@ public class Course extends AppCompatActivity {
     @Override
     protected void onPause() {
         super.onPause();
-        try {
-            exoPlayer.setPlayWhenReady(false);
-        } catch (Exception e) {
-            Log.d("TAG", e.getMessage());
-        }
-    }
-
-    @Override
-    protected void onDestroy() {
-        super.onDestroy();
         try {
             exoPlayer.setPlayWhenReady(false);
         } catch (Exception e) {

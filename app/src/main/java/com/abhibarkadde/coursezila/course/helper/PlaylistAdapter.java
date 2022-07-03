@@ -15,6 +15,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.abhibarkadde.coursezila.R;
+import com.abhibarkadde.coursezila.dialogs.ShowMessagePrompt;
 import com.abhibarkadde.coursezila.utils.AppConstants;
 
 import java.util.Arrays;
@@ -41,18 +42,24 @@ public class PlaylistAdapter extends RecyclerView.Adapter<PlaylistAdapter.ViewHo
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         try {
-            //holder.name.setText(list.get(position));
+            holder.name.setText(list.get(position));
             holder.dropLayout.setOnClickListener(v -> {
-                if (holder.recyclerView.getVisibility() == View.GONE) {
-                    holder.recyclerView.setVisibility(View.VISIBLE);
-                    holder.arrow.setBackground(ContextCompat.getDrawable(activity, R.drawable.ic_arrow_down));
+                if (position == 0 || position == 1) {
+                    if (holder.recyclerView.getVisibility() == View.GONE) {
+                        holder.recyclerView.setVisibility(View.VISIBLE);
+                        holder.arrow.setBackground(ContextCompat.getDrawable(activity, R.drawable.ic_arrow_down));
+                    } else {
+                        holder.recyclerView.setVisibility(View.GONE);
+                        holder.arrow.setBackground(ContextCompat.getDrawable(activity, R.drawable.ic_arrow_up));
+                    }
                 } else {
-                    holder.recyclerView.setVisibility(View.GONE);
-                    holder.arrow.setBackground(ContextCompat.getDrawable(activity, R.drawable.ic_arrow_up));
+                    ShowMessagePrompt.showPrompt(activity,
+                            "Module not available",
+                            "Module " + list.get(position) + " will be available soon, please try again after some time");
                 }
             });
 
-            if (position == 0) {
+            if (position == 0 || position == 1) {
                 holder.recyclerView.setLayoutManager(new LinearLayoutManager(activity));
                 holder.recyclerView.setAdapter(new LectureListAdapter(activity, Arrays.asList(AppConstants.lectures[position])));
             }

@@ -2,10 +2,10 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/signInRoot"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:id="@+id/signInRoot"
-    android:background="@drawable/signin_background_gradient"
+    android:background="@color/white"
     tools:context=".auth.SignIn">
 
     <com.google.android.material.imageview.ShapeableImageView
@@ -78,7 +78,7 @@
         android:fontFamily="@font/lato_bold"
         android:maxLines="2"
         android:text="Let's Get\nStarted "
-        android:textColor="@color/white"
+        android:textColor="@color/theme"
         android:textSize="78sp"
         app:layout_constraintBottom_toTopOf="@+id/textView"
         app:layout_constraintEnd_toEndOf="parent"
@@ -95,7 +95,6 @@
         android:fontFamily="@font/open_sans_light"
         android:gravity="start"
         android:text="Discover the things you want to learn and grow with them"
-        android:textColor="#B3FFFFFF"
         app:layout_constraintBottom_toTopOf="@+id/materialCardView"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -116,11 +115,11 @@
             android:id="@+id/txtSignIn"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:background="@color/white"
+            android:background="@drawable/signin_background_gradient"
             android:fontFamily="@font/noto_sans_semi_bold"
             android:gravity="center"
             android:text="Get Started"
-            android:textColor="@color/theme"
+            android:textColor="@color/white"
             android:textSize="18sp"
             tools:ignore="HardcodedText" />
 

@@ -1,16 +1,19 @@
 package com.abhibarkadde.coursezila.course.helper;
 
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.FrameLayout;
+import android.widget.LinearLayout;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.abhibarkadde.coursezila.R;
+import com.abhibarkadde.coursezila.course.FullScreenPlayer;
 
 import java.util.List;
 
@@ -34,9 +37,7 @@ public class LectureListAdapter extends RecyclerView.Adapter<LectureListAdapter.
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         holder.name.setText(list.get(position).split("~")[0]);
-        holder.name.setOnClickListener(v -> {
-            Toast.makeText(activity, list.get(position).split("~")[1], Toast.LENGTH_SHORT).show();
-        });
+        holder.root.setOnClickListener(v -> activity.startActivity(new Intent(activity, FullScreenPlayer.class)));
     }
 
     @Override
@@ -44,8 +45,9 @@ public class LectureListAdapter extends RecyclerView.Adapter<LectureListAdapter.
         return list.size();
     }
 
-    public class ViewHolder extends RecyclerView.ViewHolder {
+    public static class ViewHolder extends RecyclerView.ViewHolder {
 
+        LinearLayout root;
         TextView name, time;
 
         public ViewHolder(@NonNull View itemView) {
@@ -53,6 +55,7 @@ public class LectureListAdapter extends RecyclerView.Adapter<LectureListAdapter.
 
             name = itemView.findViewById(R.id.txt_LectureName);
             time = itemView.findViewById(R.id.tx_LectureTime);
+            root = itemView.findViewById(R.id.root);
         }
     }
 }

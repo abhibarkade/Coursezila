@@ -28,4 +28,13 @@
         android:background="@drawable/ic_setting"
         android:backgroundTint="#aaa" />
 
+    <ImageView
+        android:onClick="close"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="start"
+        android:layout_margin="16dp"
+        android:background="@drawable/ic_round_close_24"
+        android:backgroundTint="#aaa" />
+
 </FrameLayout>

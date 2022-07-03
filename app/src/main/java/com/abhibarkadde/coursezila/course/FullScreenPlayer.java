@@ -3,6 +3,7 @@ package com.abhibarkadde.coursezila.course;
 import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
 import android.view.WindowManager;
 import android.widget.ImageView;
 
@@ -43,9 +44,7 @@ public class FullScreenPlayer extends AppCompatActivity {
 
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
 
-        setting.setOnClickListener(v -> {
-            showOptions();
-        });
+        setting.setOnClickListener(v -> showOptions());
 
         try {
             BandwidthMeter bandwidthMeter = new DefaultBandwidthMeter();
@@ -78,5 +77,19 @@ public class FullScreenPlayer extends AppCompatActivity {
             exoPlayerView.setResizeMode(modes[i]);
         });
         builder.show();
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        try {
+            exoPlayer.setPlayWhenReady(false);
+        } catch (Exception e) {
+            Log.d("TAG", e.getMessage());
+        }
+    }
+
+    public void close(View view) {
+        finish();
     }
 }
