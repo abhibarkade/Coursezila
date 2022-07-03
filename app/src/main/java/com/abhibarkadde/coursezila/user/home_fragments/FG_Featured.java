@@ -45,7 +45,9 @@ public class FG_Featured extends Fragment {
                 view.findViewById(R.id.c1),
                 view.findViewById(R.id.c2),
                 view.findViewById(R.id.c3),
-                view.findViewById(R.id.c4)
+                view.findViewById(R.id.c4),
+                view.findViewById(R.id.c6),
+                view.findViewById(R.id.c5)
         };
 
         edSearch = view.findViewById(R.id.ed_search);

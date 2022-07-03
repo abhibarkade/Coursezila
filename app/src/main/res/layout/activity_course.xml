@@ -15,6 +15,7 @@
         <com.google.android.material.appbar.AppBarLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:background="@color/themeBlue"
             android:elevation="0dp"
             app:elevation="0dp">
 
@@ -22,7 +23,6 @@
                 android:id="@+id/course_toolbar"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@color/theme"
                 app:titleTextColor="@color/white" />
 
         </com.google.android.material.appbar.AppBarLayout>
@@ -36,111 +36,115 @@
                 android:layout_height="match_parent"
                 android:orientation="vertical">
 
-                <LinearLayout
+                <com.google.android.material.card.MaterialCardView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:background="@drawable/featured_frag_top"
-                    android:orientation="vertical">
-
-                    <com.google.android.material.card.MaterialCardView
-                        android:layout_width="match_parent"
-                        android:layout_height="200dp"
-                        android:layout_margin="16dp"
-                        android:layout_marginStart="4dp"
-                        android:layout_marginTop="24dp"
-                        android:layout_marginEnd="4dp"
-                        android:layout_marginBottom="4dp"
-                        app:cardCornerRadius="4dp"
-                        app:elevation="8dp">
-
-                        <com.google.android.exoplayer2.ui.SimpleExoPlayerView
-                            android:id="@+id/player"
-                            android:layout_width="match_parent"
-                            android:layout_height="200dp"
-                            android:elevation="8dp"
-                            app:resize_mode="fill"
-                            app:use_controller="true" />
-
-                    </com.google.android.material.card.MaterialCardView>
+                    android:elevation="0dp">
 
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginStart="16dp"
-                        android:layout_marginTop="16dp"
-                        android:layout_marginEnd="16dp"
                         android:orientation="vertical">
 
-                        <TextView
+                        <com.google.android.material.card.MaterialCardView
                             android:layout_width="match_parent"
-                            android:layout_height="48dp"
-                            android:fontFamily="@font/roboto_bold"
-                            android:text="Android App Development Bootcamp with Java"
-                            android:textColor="#CCFFFFFF"
-                            android:textSize="22sp" />
+                            android:layout_height="200dp"
+                            android:layout_margin="16dp"
+                            android:layout_marginStart="4dp"
+                            android:layout_marginTop="24dp"
+                            android:layout_marginEnd="4dp"
+                            android:layout_marginBottom="4dp"
+                            app:cardCornerRadius="4dp"
+                            app:elevation="16dp">
+
+                            <com.google.android.exoplayer2.ui.SimpleExoPlayerView
+                                android:id="@+id/player"
+                                android:layout_width="match_parent"
+                                android:layout_height="200dp"
+                                android:elevation="8dp"
+                                app:resize_mode="fill"
+                                app:use_controller="true" />
+
+                        </com.google.android.material.card.MaterialCardView>
 
                         <LinearLayout
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:layout_marginTop="8dp">
+                            android:layout_marginStart="16dp"
+                            android:layout_marginTop="16dp"
+                            android:layout_marginEnd="16dp"
+                            android:orientation="vertical">
 
                             <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
+                                android:layout_width="match_parent"
+                                android:layout_height="48dp"
                                 android:fontFamily="@font/roboto_bold"
-                                android:text="Created by"
-                                android:textColor="#CCFFFFFF"
-                                android:textSize="12sp" />
-
-                            <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_marginStart="4dp"
-                                android:text="Abhishek Barkade"
-                                android:textColor="@color/white" />
-
-                        </LinearLayout>
-
-                        <com.google.android.material.card.MaterialCardView
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_marginTop="20dp"
-                            android:layout_marginBottom="12dp"
-                            android:backgroundTint="#f2f2f2"
-                            app:cardCornerRadius="16dp">
+                                android:text="Android App Development Bootcamp with Java"
+                                android:textSize="22sp" />
 
                             <LinearLayout
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:layout_margin="6dp">
+                                android:layout_marginTop="8dp">
 
                                 <TextView
-                                    android:id="@+id/tx_ch1"
-                                    android:layout_width="0dp"
-                                    android:layout_height="46dp"
-                                    android:layout_weight="1"
-                                    android:background="@drawable/label_back"
-                                    android:gravity="center"
-                                    android:onClick="changeView"
-                                    android:text="Playlist"
-                                    android:textColor="@color/white" />
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:fontFamily="@font/roboto_bold"
+                                    android:text="Created by"
+                                    android:textSize="12sp" />
 
                                 <TextView
-                                    android:id="@+id/tx_ch2"
-                                    android:layout_width="0dp"
-                                    android:layout_height="46dp"
-                                    android:layout_weight="1"
-                                    android:gravity="center"
-                                    android:onClick="changeView"
-                                    android:text="Description" />
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginStart="4dp"
+                                    android:text="Abhishek Barkade"
+                                    android:textColor="@color/themePurple" />
 
                             </LinearLayout>
 
-                        </com.google.android.material.card.MaterialCardView>
+                            <com.google.android.material.card.MaterialCardView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="20dp"
+                                android:layout_marginBottom="12dp"
+                                android:backgroundTint="#f2f2f2"
+                                app:cardCornerRadius="16dp">
+
+                                <LinearLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_margin="6dp">
+
+                                    <TextView
+                                        android:id="@+id/tx_ch1"
+                                        android:layout_width="0dp"
+                                        android:layout_height="46dp"
+                                        android:layout_weight="1"
+                                        android:background="@drawable/label_back"
+                                        android:gravity="center"
+                                        android:onClick="changeView"
+                                        android:text="Playlist"
+                                        android:textColor="@color/white" />
+
+                                    <TextView
+                                        android:id="@+id/tx_ch2"
+                                        android:layout_width="0dp"
+                                        android:layout_height="46dp"
+                                        android:layout_weight="1"
+                                        android:gravity="center"
+                                        android:onClick="changeView"
+                                        android:text="Description" />
+
+                                </LinearLayout>
+
+                            </com.google.android.material.card.MaterialCardView>
+
+                        </LinearLayout>
 
                     </LinearLayout>
 
-                </LinearLayout>
+                </com.google.android.material.card.MaterialCardView>
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -158,13 +162,13 @@
 
                     <com.google.android.material.textview.MaterialTextView
                         android:id="@+id/txt_Description"
-                        android:visibility="gone"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_margin="30dp"
                         android:fontFamily="@font/noto_sans_semi_bold"
                         android:text="@string/description"
-                        android:textSize="16sp" />
+                        android:textSize="16sp"
+                        android:visibility="gone" />
 
                 </LinearLayout>
 
