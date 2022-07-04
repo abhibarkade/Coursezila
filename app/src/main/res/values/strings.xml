@@ -44,5 +44,13 @@
         - Make any Android app you like (your imagination is your only limit)\n
 
     </string>
+    <string name="contact_abhibarkade_gmail_com">contact.abhibarkade@gmail.com</string>
+
+    <string name="aboutus">
+        "Welcome to Coursezila,\n An application that provides various software development courses. We are dedicated to providing you with the best learning and coaching, focusing on well understanding.\n\n\n"
+            "We are working to turn our passion into a great course. We hope you are enjoying our courses as much as we are enjoying by offering them to you."
+            "Our application's main motive is to provide personal teaching courses to students in various fields.\n\n\n"
+            "It is an personal coaching app will include courses belongs only to the founder."
+    </string>
 
 </resources>

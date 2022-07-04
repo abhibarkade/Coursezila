@@ -13,6 +13,7 @@
         <entry key="..\:/Abhi/Android/Coursezila/app/src/main/res/drawable/signin_background_gradient.xml" value="0.1665" />
         <entry key="..\:/Abhi/Android/Coursezila/app/src/main/res/drawable/splash_background.xml" value="0.18" />
         <entry key="..\:/Abhi/Android/Coursezila/app/src/main/res/layout-sw600dp/activity_home.xml" value="0.15703125" />
+        <entry key="..\:/Abhi/Android/Coursezila/app/src/main/res/layout/activity_about_us.xml" value="0.25" />
         <entry key="..\:/Abhi/Android/Coursezila/app/src/main/res/layout/activity_add_course.xml" value="0.209375" />
         <entry key="..\:/Abhi/Android/Coursezila/app/src/main/res/layout/activity_course.xml" value="0.17" />
         <entry key="..\:/Abhi/Android/Coursezila/app/src/main/res/layout/activity_full_screen_player.xml" value="0.13020833333333334" />
@@ -22,7 +23,7 @@
         <entry key="..\:/Abhi/Android/Coursezila/app/src/main/res/layout/activity_user_profile.xml" value="0.25" />
         <entry key="..\:/Abhi/Android/Coursezila/app/src/main/res/layout/course_home_tile.xml" value="0.25" />
         <entry key="..\:/Abhi/Android/Coursezila/app/src/main/res/layout/demo_recycle.xml" value="0.209375" />
-        <entry key="..\:/Abhi/Android/Coursezila/app/src/main/res/layout/fragment_f_g__home.xml" value="0.15" />
+        <entry key="..\:/Abhi/Android/Coursezila/app/src/main/res/layout/fragment_f_g__home.xml" value="0.22" />
         <entry key="..\:/Abhi/Android/Coursezila/app/src/main/res/layout/fragment_f_g__my_learning.xml" value="0.1953125" />
         <entry key="..\:/Abhi/Android/Coursezila/app/src/main/res/layout/loading_animation.xml" value="0.209375" />
         <entry key="..\:/Abhi/Android/Coursezila/app/src/main/res/layout/module_top_tile.xml" value="0.209375" />

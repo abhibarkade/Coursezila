@@ -41,7 +41,7 @@
                         android:textStyle="bold" />
 
                     <com.google.android.material.card.MaterialCardView
-                        android:id="@+id/openProfile"
+                        android:id="@+id/openAboutUs"
                         android:layout_width="wrap_content"
                         android:layout_height="match_parent"
                         android:backgroundTint="#80FFFFFF"
@@ -52,7 +52,7 @@
                             android:layout_height="20dp"
                             android:layout_gravity="center"
                             android:layout_margin="8dp"
-                            android:background="@drawable/ic_notifications"
+                            android:background="@drawable/ic_baseline_info_24"
                             android:backgroundTint="@color/white" />
 
                     </com.google.android.material.card.MaterialCardView>

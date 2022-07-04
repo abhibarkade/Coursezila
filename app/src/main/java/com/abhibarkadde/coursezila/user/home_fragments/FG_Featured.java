@@ -13,6 +13,7 @@ import android.widget.ImageView;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
+import com.abhibarkadde.coursezila.AboutUs;
 import com.abhibarkadde.coursezila.R;
 import com.abhibarkadde.coursezila.course.Course;
 import com.abhibarkadde.coursezila.dialogs.ShowMessagePrompt;
@@ -27,6 +28,7 @@ public class FG_Featured extends Fragment {
     MaterialCardView[] courses;
     ImageView mic;
     EditText edSearch;
+    MaterialCardView aboutUs;
 
     public FG_Featured() {
     }
@@ -49,6 +51,11 @@ public class FG_Featured extends Fragment {
                 view.findViewById(R.id.c6),
                 view.findViewById(R.id.c5)
         };
+
+        aboutUs = view.findViewById(R.id.openAboutUs);
+        aboutUs.setOnClickListener(view1 -> {
+            startActivity(new Intent(getActivity(), AboutUs.class));
+        });
 
         edSearch = view.findViewById(R.id.ed_search);
         mic = view.findViewById(R.id.im_mic);

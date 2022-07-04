@@ -3,6 +3,7 @@ package com.abhibarkadde.coursezila.auth;
 import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.WindowManager;
 import android.widget.TextView;
 
 import androidx.activity.result.ActivityResultLauncher;
