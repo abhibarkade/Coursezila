@@ -3,6 +3,7 @@ package com.abhibarkadde.coursezila.auth;
 import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.WindowManager;
 import android.widget.TextView;
 
@@ -54,12 +55,12 @@ public class SignIn extends AppCompatActivity {
         if (result.getResultCode() == RESULT_OK) {
             startActivity(new Intent(SignIn.this, Home.class));
             finish();
-        } else
+        } else{
             Snackbar.make(root, "Sign in Failed", 1600)
-                    .setBackgroundTint(getColor(R.color.white))
                     .setAction("Try Again", view -> signInWithGoogle())
-                    .setActionTextColor(getColor(R.color.blue))
                     .show();
+            Log.d("ERROR",result.toString());
+        }
     }
 
     private final ActivityResultLauncher<Intent> signInLauncher = registerForActivityResult(

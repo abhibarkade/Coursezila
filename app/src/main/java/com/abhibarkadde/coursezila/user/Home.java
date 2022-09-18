@@ -11,11 +11,13 @@ import com.abhibarkadde.coursezila.profile.UserDetails;
 import com.abhibarkadde.coursezila.user.home_fragments.FG_Featured;
 import com.abhibarkadde.coursezila.user.home_fragments.FG_MyLearning;
 import com.abhibarkadde.coursezila.user.home_fragments.FG_Settings;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.QuerySnapshot;
 
 public class Home extends AppCompatActivity {
 
@@ -55,29 +57,57 @@ public class Home extends AppCompatActivity {
     protected void onStart() {
         super.onStart();
 
-        FirebaseFirestore firestore = FirebaseFirestore.getInstance();
-        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+        try {
+            FirebaseFirestore firestore = FirebaseFirestore.getInstance();
+            FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
 
-        firestore.collection("Users")
-                .addSnapshotListener((value, error) -> {
-                    boolean flg = false;
-                    for (DocumentSnapshot snap : value.getDocuments()) {
-                        UserDetails userDetails = snap.toObject(UserDetails.class);
-                        if (userDetails.getName().equals(user.getDisplayName()))
-                            flg = true;
+            /*firestore.collection("Users")
+                    .addSnapshotListener((value, error) -> {
+                        boolean flg = false;
+                        for (DocumentSnapshot snap : value.getDocuments()) {
+                            UserDetails userDetails = snap.toObject(UserDetails.class);
+                            if (userDetails.getName().equals(user.getDisplayName()))
+                                flg = true;
 
-                        if (!flg) {
-                            UserDetails usr = new UserDetails(
-                                    user.getEmail().split("@")[0],
-                                    user.getEmail(),
-                                    ""
-                            );
-                            firestore.collection("Users")
-                                    .document(usr.getName())
-                                    .set(usr);
+                            if (!flg) {
+                                UserDetails usr = new UserDetails(
+                                        user.getEmail().split("@")[0],
+                                        user.getEmail(),
+                                        ""
+                                );
+                                firestore.collection("Users")
+                                        .document(usr.getName())
+                                        .set(usr);
+                            }
                         }
-                    }
-                });
+                    });*/
+            firestore.collection("Users")
+                    .get()
+                    .addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
+                        @Override
+                        public void onSuccess(QuerySnapshot queryDocumentSnapshots) {
+                            boolean flg = false;
+                            for (DocumentSnapshot snap : queryDocumentSnapshots.getDocuments()) {
+                                UserDetails userDetails = snap.toObject(UserDetails.class);
+                                if (userDetails.getName().equals(user.getDisplayName()))
+                                    flg = true;
+
+                                if (!flg) {
+                                    UserDetails usr = new UserDetails(
+                                            user.getEmail().split("@")[0],
+                                            user.getEmail(),
+                                            ""
+                                    );
+                                    firestore.collection("Users")
+                                            .document(usr.getName())
+                                            .set(usr);
+                                }
+                            }
+                        }
+                    });
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 }
 
