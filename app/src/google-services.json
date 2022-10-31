@@ -7,26 +7,18 @@
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:255973072029:android:55fbd39e10796457b1c874",
+        "mobilesdk_app_id": "1:255973072029:android:2921937b3604a9aab1c874",
         "android_client_info": {
-          "package_name": "com.abhibarkadde.coursezila"
+          "package_name": "com.abhibarkade.coursezila"
         }
       },
       "oauth_client": [
         {
-          "client_id": "255973072029-hi496m1bqbrqgo9ltuphf086a09ekph6.apps.googleusercontent.com",
+          "client_id": "255973072029-v17tjmj1camhpkc5732slca6unoi1dlu.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {
-            "package_name": "com.abhibarkadde.coursezila",
-            "certificate_hash": "5df19e20d15be750d6821d874fb3314c7b98a122"
-          }
-        },
-        {
-          "client_id": "255973072029-nv19p2djr0bo2ccga0uhchf49eh1pjfu.apps.googleusercontent.com",
-          "client_type": 1,
-          "android_info": {
-            "package_name": "com.abhibarkadde.coursezila",
-            "certificate_hash": "0f2884c095d0357e49bb8af94f66481aaed9aebd"
+            "package_name": "com.abhibarkade.coursezila",
+            "certificate_hash": "6312beebd5a2c15ee031b21a4bd8a61a283a094f"
           }
         },
         {
