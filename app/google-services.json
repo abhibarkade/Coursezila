@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "255973072029",
+    "project_id": "coursezila",
+    "storage_bucket": "coursezila.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:255973072029:android:6532b00bad5a2e7cb1c874",
+        "android_client_info": {
+          "package_name": "com.abhibarkade.course"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "255973072029-hbdto442vnii1hhkba2vqse8iupejieo.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.abhibarkade.course",
+            "certificate_hash": "6312beebd5a2c15ee031b21a4bd8a61a283a094f"
+          }
+        },
+        {
+          "client_id": "255973072029-7ed6vmh2dfugpgfm5fqjv1cqb1ukhk8n.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCXV4_gBTgvSGzrFBX9-bqssaVu3CERKkQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "255973072029-7ed6vmh2dfugpgfm5fqjv1cqb1ukhk8n.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
